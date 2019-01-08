@@ -13,6 +13,25 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+    <ion-list>
+
+        <ion-item>
+          <ion-label floating>Titulo</ion-label>
+          <ion-input type="text" [(ngModel)]="note.title"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Decripcion</ion-label>
+          <ion-textarea [(ngModel)]="note.description"></ion-textarea>
+        </ion-item>
+      
+      </ion-list>
+      <div padding>
+          <button ion-button block (click)="addNote()">Guardar nota</button>
+          <button *ngIf="id != 0" ion-button block (click)="deleteNote()" color="danger">Eliminar nota</button>
+      </div>
+      
 
 </ion-content>
