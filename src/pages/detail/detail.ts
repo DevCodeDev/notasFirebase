@@ -10,7 +10,7 @@ import { NotasService } from '../../services/notes.services';
 })
 export class DetailPage {
 
-  note={id:null, title:null, description:null};
+  note={};
   id = null;
 
   constructor(public navCtrl: NavController, 
@@ -19,7 +19,10 @@ export class DetailPage {
 
             this.id = navParams.get('id'); 
             if(this.id != 0){
-              this.note = notesServices.getNote(this.id);
+              notesServices.getNote(this.id)
+                .valueChanges().subscribe( note => {
+                  this.note = note;
+                });
             }  
             
   }
@@ -29,7 +32,7 @@ export class DetailPage {
   }
 
   addNote(){
-    if(this.id !=0){
+    if(this.id != 0){
       //Estamos editando
       this.notesServices.editNote(this.note);
       alert("Nota editada con exito");

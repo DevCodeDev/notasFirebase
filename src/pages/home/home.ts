@@ -15,7 +15,10 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public notesServices:NotasService) {
 
-      this.notes = notesServices.getNotes();
+      notesServices.getNotes()
+        .valueChanges().subscribe( notas => {
+          this.notes = notas;
+        });
 
   }
 
