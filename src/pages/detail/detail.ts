@@ -12,6 +12,7 @@ export class DetailPage {
 
   note={};
   id = null;
+  show=true;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -46,6 +47,7 @@ export class DetailPage {
   }
 
   deleteNote(){
+    this.show=false;
     this.notesServices.deleteNote(this.note);
     alert("Nota eliminada con exito");
     this.navCtrl.pop();
